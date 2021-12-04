@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:EdibleOilAnalysis.ViewModels"
+    x:Class="EdibleOilAnalysis.Views.CalculatorPage">
+    <ContentPage.BindingContext>
+        <vm:CalculatorViewModel x:Name="vm"/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout Margin="15">
+        <Grid ColumnDefinitions="*, *, *">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="FFA"/>
+                <CheckBox IsChecked="{Binding FFACheckBox}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Column="1">
+                <Label Text="Protein"/>
+                <CheckBox IsChecked="{Binding ProteinCheckBox}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Column="2">
+                <Label Text="Oil"/>
+                <CheckBox IsChecked="{Binding OilCheckBox}"/>
+            </StackLayout>
+        </Grid>
+            <BoxView Grid.Row="1" BackgroundColor="Red" HeightRequest="1"/> 
+            <Grid ColumnDefinitions="2*, 0.5*">
+                <Label Text="N IS THE NORMALITY (Sodium hydroxide)"/>
+                <Entry Text="{Binding Normality}" Grid.Column="1" Keyboard="Numeric"/>
+            </Grid>
+            <BoxView Grid.Row="1" BackgroundColor="Red" HeightRequest="1"/> 
+            <StackLayout IsVisible="{Binding FFACheckBox}">
+                <Label Text="For Free Fatty Acids(FFA)" FontSize="Large"/>
+                <Grid ColumnDefinitions="2*, 0.5*">
+                    <Label Text="v is the volume of the titrant"/>
+                    <Entry Text="{Binding FFAVolume}" Grid.Column="1" Keyboard="Numeric"/>
+                </Grid>
+                <Grid ColumnDefinitions="2*, 0.5*">
+                    <Label Text="b is the blank volume, (titration without mixing with oil)"/>
+                    <Entry Text="{Binding BlankFFAVolume}" Grid.Column="1" Keyboard="Numeric"/>
+                </Grid>
+                <Grid ColumnDefinitions="2*, 0.5*">
+                    <Label Text="Weight in g of the sample"/>
+                    <Entry Text="{Binding WeightFFA}" Grid.Column="1" Keyboard="Numeric"/>
+                </Grid>
+
+                <Label Text="{Binding FFA}"/>
+            </StackLayout>
+            <BoxView Grid.Row="1" BackgroundColor="Red" HeightRequest="1"/> 
+            <StackLayout IsVisible="{Binding ProteinCheckBox}">
+                <Label Text="For Protein"/>
+                <Grid ColumnDefinitions="3*, *">
+                    <Label Text="v is the volume of the titrant"/>
+                    <Entry Text="{Binding ProteinVolume}" Grid.Column="1" Keyboard="Numeric"/>
+                </Grid>
+                <Grid ColumnDefinitions="3*, *">
+                    <Label Text="b is the blank volume"/>
+                    <Entry Text="{Binding BlankProteinVolume}" Grid.Column="1" Keyboard="Numeric"/>
+                </Grid>
+                <Grid ColumnDefinitions="3*, *">
+                    <Label Text="W"/>
+                    <Entry Text="{Binding WeightProtein}" Grid.Column="1" Keyboard="Numeric"/>
+                </Grid>
+
+                <Label Text="{Binding Protein}"/>
+            </StackLayout>
+            <BoxView Grid.Row="1" BackgroundColor="Red" HeightRequest="1"/> 
+            <StackLayout IsVisible="{Binding OilCheckBox}">
+                <Label Text="For Oil"/>
+                <Grid ColumnDefinitions="3*, *">
+                    <Label Text="W1"/>
+                    <Entry Text="{Binding OilVolume}" Grid.Column="1" Keyboard="Numeric"/>
+                </Grid>
+                <Grid ColumnDefinitions="3*, *" RowDefinitions="auto, auto">
+                    <Label Text="W2"/>
+                    <Entry Text="{Binding BlankOilVolume}" Grid.Column="1" Keyboard="Numeric"/>
+                    <Label Text="{Binding OilVolumeDifference}" Grid.Column="1" Grid.Row="1" LineBreakMode="TailTruncation"/>
+                </Grid>
+                
+                <Grid ColumnDefinitions="3*, *">
+                    <Label Text="W"/>
+                    <Entry Text="{Binding WeightOil}" Grid.Column="1" Keyboard="Numeric"/>
+                </Grid>
+
+                <Label Text="{Binding Oil}"/>
+            </StackLayout>
+
+        <Button Command="{Binding CalculateCommand}" Text="calculate"/>
+    </StackLayout>
+        </ScrollView>
+</ContentPage>
