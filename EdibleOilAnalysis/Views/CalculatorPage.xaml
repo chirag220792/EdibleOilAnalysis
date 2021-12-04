@@ -47,16 +47,16 @@
             </StackLayout>
             <BoxView Grid.Row="1" BackgroundColor="Red" HeightRequest="1"/> 
             <StackLayout IsVisible="{Binding ProteinCheckBox}">
-                <Label Text="For Protein"/>
-                <Grid ColumnDefinitions="3*, *">
+                <Label Text="For Protein" FontSize="Large"/>
+                <Grid ColumnDefinitions="2*, 0.5*">
                     <Label Text="v is the volume of the titrant"/>
                     <Entry Text="{Binding ProteinVolume}" Grid.Column="1" Keyboard="Numeric"/>
                 </Grid>
-                <Grid ColumnDefinitions="3*, *">
+                <Grid ColumnDefinitions="2*, 0.5*">
                     <Label Text="b is the blank volume"/>
                     <Entry Text="{Binding BlankProteinVolume}" Grid.Column="1" Keyboard="Numeric"/>
                 </Grid>
-                <Grid ColumnDefinitions="3*, *">
+                <Grid ColumnDefinitions="2*, 0.5*">
                     <Label Text="W"/>
                     <Entry Text="{Binding WeightProtein}" Grid.Column="1" Keyboard="Numeric"/>
                 </Grid>
@@ -65,18 +65,18 @@
             </StackLayout>
             <BoxView Grid.Row="1" BackgroundColor="Red" HeightRequest="1"/> 
             <StackLayout IsVisible="{Binding OilCheckBox}">
-                <Label Text="For Oil"/>
-                <Grid ColumnDefinitions="3*, *">
+                <Label Text="For Oil" FontSize="Large"/>
+                <Grid ColumnDefinitions="2*, 0.5*">
                     <Label Text="W1"/>
                     <Entry Text="{Binding OilVolume}" Grid.Column="1" Keyboard="Numeric"/>
                 </Grid>
-                <Grid ColumnDefinitions="3*, *" RowDefinitions="auto, auto">
+                <Grid ColumnDefinitions="2*, 0.5*" RowDefinitions="auto, auto">
                     <Label Text="W2"/>
                     <Entry Text="{Binding BlankOilVolume}" Grid.Column="1" Keyboard="Numeric"/>
                     <Label Text="{Binding OilVolumeDifference}" Grid.Column="1" Grid.Row="1" LineBreakMode="TailTruncation"/>
                 </Grid>
                 
-                <Grid ColumnDefinitions="3*, *">
+                <Grid ColumnDefinitions="2*, 0.5*">
                     <Label Text="W"/>
                     <Entry Text="{Binding WeightOil}" Grid.Column="1" Keyboard="Numeric"/>
                 </Grid>
